@@ -1,14 +1,30 @@
 const fs = require('fs')
 
-const fileText = fs.readFileSync('file.txt','utf8')
+//Sync way
 
-console.log(fileText)
+// const fileText = fs.readFileSync('file.txt','utf8')
 
-const textAdd = `i am added to the file ${Date.now()}`
+// console.log(fileText)
 
-fs.writeFileSync('file.txt',textAdd)
+// const textAdd = `i am added to the file ${Date.now()}`
 
-//writing a new file
-fs.writeFileSync('output.txt', textAdd)
+// fs.writeFileSync('file.txt',textAdd)
 
-console.log(fileText)
+// //writing a new file
+// fs.writeFileSync('output.txt', textAdd)
+
+// console.log(fileText)
+
+
+//Async way
+
+const callbackFn= (err,data)=>{
+    if(err){
+        console.error("could not find the file")
+    }
+    console.log(data) 
+}
+
+
+fs.readFile('async.txt','utf8',callbackFn)
+
