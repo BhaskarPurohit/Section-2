@@ -18,13 +18,18 @@ const fs = require('fs')
 
 //Async way
 
-const callbackFn= (err,data)=>{
-    if(err){
-        console.error("could not find the file")
-    }
-    console.log(data) 
-}
+// const callbackFn= (err,data)=>{
+//     if(err){
+//         console.error("could not find the file")
+//     }
+//     console.log(data) 
+// }
 
 
-fs.readFile('async.txt','utf8',callbackFn)
+// fs.readFile('async.txt','utf8',callbackFn)
 
+//non blocking way to access the files
+
+fs.readFile('file.txt','utf8',(err,data)=>{
+    fs.readFile(`${data}`)
+})
