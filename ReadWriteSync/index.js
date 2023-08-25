@@ -30,6 +30,15 @@ const fs = require('fs')
 
 //non blocking way to access the files
 
-fs.readFile('file.txt','utf8',(err,data)=>{
-    fs.readFile(`${data}`)
+fs.readFile('file.txt','utf8',(err,data1)=>{
+    fs.readFile(`./${data1}.txt`,'utf8',(err,data2)=>{
+        console.log(data2)
+        fs.readFile('./append.txt','utf8',(err, data3)=>{
+            console.log(data3)
+
+            fs.writeFile('./final.txt', `${data2}\n${data3}`,'utf8', err =>{
+                console.log("ypur file has been written")
+            })
+        })
+    })
 })
